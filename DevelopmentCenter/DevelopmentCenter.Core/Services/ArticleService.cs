@@ -18,8 +18,9 @@ namespace DevelopmentCenter.Core.Services
         void Update(Article article);
         void Delete(int id);
         Article Get(int id);
-        IEnumerable<Article> GetByChannelTag(string tagName);
-        IEnumerable<Article> GetByColumnTag(string tagName);
+
+        IEnumerable<Article> GetByChannelTag(string tagName, int pageIndex, int pageSize, ref int totalCount);
+        IEnumerable<Article> GetByColumnTag(string tagName, int pageIndex, int pageSize, ref int totalCount);
     }
 
     public class ArticleService : IArticleService
@@ -66,18 +67,24 @@ namespace DevelopmentCenter.Core.Services
             return _appDbContext.Articles.Find(id);
         }
 
-        public IEnumerable<Article> GetByChannelTag(string tagName)
+        public IEnumerable<Article> GetByChannelTag(string tagName, int pageIndex, int pageSize, ref int totalCount)
         {
-            var list = _appDbContext.Articles.Where(x => x.ChannelTags.Contains(tagName)).OrderByDescending(x => x.CreatedUtc).ToList();
-            return list;
+            var list = (from p in _appDbContext.Articles
+                       where p.ChannelTags.Contains(tagName)
+                       orderby p.CreatedUtc
+                       select p).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            totalCount = _appDbContext.Articles.Count(x => x.ChannelTags.Contains(tagName));
+            return list.ToList();
         }
 
-        public IEnumerable<Article> GetByColumnTag(string tagName)
+        public IEnumerable<Article> GetByColumnTag(string tagName, int pageIndex, int pageSize, ref int totalCount)
         {
-            var list = _appDbContext.Articles.Where(x => x.ColumnTags.Contains(tagName)).OrderByDescending(x => x.CreatedUtc).ToList();
-            return list;
-        }
-
-     
+            var list = (from p in _appDbContext.Articles
+                        where p.ColumnTags.Contains(tagName)
+                        orderby p.CreatedUtc
+                        select p).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            totalCount = _appDbContext.Articles.Count(x => x.ColumnTags.Contains(tagName));
+            return list.ToList();
+        }     
     }
 }
