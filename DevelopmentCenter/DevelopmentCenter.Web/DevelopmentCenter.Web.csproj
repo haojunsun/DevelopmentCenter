@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -184,6 +185,7 @@
     </Compile>
     <Compile Include="Helpers\ControllerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\site-admin.css" />
@@ -921,18 +923,8 @@
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Article\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Article\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Broadcast\Detail.cshtml" />
-    <Content Include="Areas\Admin\Views\Broadcast\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Carousel\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Carousel\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Customized\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Customized\List.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\TravelNotes\Detail.cshtml" />
-    <Content Include="Areas\Admin\Views\TravelNotes\List.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\User\List.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
