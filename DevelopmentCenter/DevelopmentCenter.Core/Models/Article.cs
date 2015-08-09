@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+
 
 namespace DevelopmentCenter.Core.Models
 {
@@ -32,7 +32,7 @@ namespace DevelopmentCenter.Core.Models
         /// <summary>
         /// 内容
         /// </summary>
-        [MaxLength, AllowHtml]
+        [MaxLength]
         public string Body { get; set; }
 
         /// <summary>
