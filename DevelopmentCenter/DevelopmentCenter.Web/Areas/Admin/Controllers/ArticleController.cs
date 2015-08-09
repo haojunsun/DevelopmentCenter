@@ -15,31 +15,40 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
     [Authorize]
     public class ArticleController : ControllerHelper
     {
+        private readonly ISimpleAccountManager _simpleAccount;
         private readonly IArticleService _articleService;
+        private readonly IHelperServices _helperServices;
 
-        public ArticleController(IArticleService articleService)
+        public ArticleController(ISimpleAccountManager simpleAccount, IArticleService articleService, IHelperServices helperServices)
+            : base(simpleAccount, articleService)
         {
+            _simpleAccount = simpleAccount;
             _articleService = articleService;
+            _helperServices = helperServices;
         }
+
+
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="tag"></param>
+        /// <param name="channelTag"></param>
+        /// <param name="columnTag"></param>
         /// <param name="tagtype">0 频道 1 栏目</param>
         /// <param name="page"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public ActionResult List(string tag, int tagtype, int page = 1, int size = 20)
+        public ActionResult List(string channelTag, string columnTag, int tagtype, int page = 1, int size = 20)
         {
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
 
-
             var list = new List<Article>();
-
-            list = tagtype == 0 ? _articleService.GetByChannelTag(tag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(tag, pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
@@ -58,6 +67,87 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
         {
             var article = _articleService.Get(id);
             return View(article);
+        }
+
+        [HttpGet]
+        public ActionResult Create(string channelTag, string columnTag, int tagtype)
+        {
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(string channelTag, string columnTag, int tagtype, string title, string body, int isDraft)
+        {
+            var article = new Article();
+            article.Body = body;
+            article.Title = title;
+            article.CreatedUtc = DateTime.Now;
+            article.ChannelTags = channelTag;
+            article.ColumnTags = columnTag;
+            article.IsDraft = isDraft;
+            article.IsRelease = article.IsDraft == 0 ? 1 : 0;
+            article.ManagerName = _simpleAccount.GetUserElement().Name;
+
+            if (Request.Files.Count > 0)
+            {
+                article.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
+                if (string.IsNullOrEmpty(article.TitleImageUrl))
+                    return Content("<script>alert('图片不能为空');window.location.href='" + Url.Action("Create", new
+                    {
+                        ViewBag.channelTag,
+                        ViewBag.columnTag,
+                        @tagtype = 1
+                    }) + "';</script>");
+            }
+            _articleService.Add(article);
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            return Content("<script>alert('创建" + ViewBag.columnTag + "-" + ViewBag.columnTag + "内容成功');window.location.href='" + Url.Action("List", new
+            {
+                ViewBag.channelTag,
+                ViewBag.columnTag,
+                @tagtype = 1
+            }) + "';</script>");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var article = _articleService.Get(id);
+            return View(article);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Article article)
+        {
+            var old = _articleService.Get(article.ArticleId);
+            old.Title = article.Title;
+            old.Body = article.Body;
+            old.ManagerName = _simpleAccount.GetUserElement().Name;
+            old.IsDraft = article.IsDraft;
+            old.IsRelease = old.IsDraft == 0 ? 1 : 0;
+
+            if (Request.Files.Count > 0)
+            {
+                old.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
+                if (string.IsNullOrEmpty(old.TitleImageUrl))
+                    return Content("<script>alert('图片不能为空');window.location.href='" + Url.Action("Edit", new
+                    {
+                        id = article.ArticleId
+                    }) + "';</script>");
+            }
+
+            _articleService.Update(old);
+
+            return Content("<script>alert('编辑" + ViewBag.columnTag + "-" + ViewBag.columnTag + "内容成功');window.location.href='" + Url.Action("List", new
+            {
+                ViewBag.channelTag,
+                ViewBag.columnTag,
+                @tagtype = 1
+            }) + "';</script>");
         }
     }
 }

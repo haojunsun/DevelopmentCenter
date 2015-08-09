@@ -16,6 +16,8 @@ namespace DevelopmentCenter.Infrastructure.Services
         bool LoginByPassword(string userName, string password);
         void Logout();
         IEnumerable<string> GetCurrentPermissions();
+
+        UserElement GetUserElement();
     }
 
     public class SimpleAccountManager : ISimpleAccountManager
@@ -95,7 +97,11 @@ namespace DevelopmentCenter.Infrastructure.Services
             return null;
         }
 
+        public UserElement GetUserElement()
+        {
+            var userName = HttpContext.Current.User.Identity.Name;
+            return GetUserElement(userName);
+        }
 
-      
     }
 }

@@ -3,8 +3,8 @@
 
 @model PagedList.StaticPagedList<DevelopmentCenter.Core.Models.Article>
 @{
-    ViewBag.Title = "列表";
-    ViewBag.SubTitle = "管理站点活动内容";
+    ViewBag.Title = ViewBag.channelTag;
+    ViewBag.SubTitle = ViewBag.columnTag + "内容";
 }
 <div class="row">
     <div class="col-md-12">
@@ -12,7 +12,15 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs font-green-sharp"></i>
-                    <span class="caption-subject font-green-sharp bold uppercase">@ViewBag.Title</span>
+                    <span class="caption-subject font-green-sharp bold uppercase">@ViewBag.columnTag</span>
+                </div>
+                <div class="pull-right">
+
+                    <div class="btn-group">
+                        <a class="btn btn-sm green" href="@Url.Action("Create", new {ViewBag.channelTag, ViewBag.columnTag, @tagtype = 1 })">
+                            添加 @ViewBag.columnTag <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="portlet-body">
@@ -24,10 +32,10 @@
                             <tr>
                                 <th>发布人</th>
                                 <th>标题</th>
-                                <th>分类</th>
+                                <th>频道</th>
+                                <th>栏目</th>
                                 <th>开始日期</th>
-                                <th>费用</th>
-                                <th>发布日期</th>
+                                <th>发布状态</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -38,26 +46,35 @@
                                 {
                                     <tr>
                                         <td>
-                                            @item.name
+                                            @item.ManagerName
                                         </td>
                                         <td>
-                                            @item.title
+                                            @item.Title
                                         </td>
                                         <td>
-                                            @item.sort
+                                            @item.ChannelTags
                                         </td>
                                         <td>
-                                            @item.Date_start
+                                            @item.ColumnTags
                                         </td>
                                         <td>
-                                            @item.fy
+                                            @DateTime.Parse(item.CreatedUtc.ToString()).ToString("yyyy-MM-dd HH:mm:ss")
                                         </td>
                                         <td>
-                                            @item.AddTime
+                                            @(item.IsDraft == 0 ? "已发布" : "草稿")
                                         </td>
                                         <td>
-                                            <a class="btn default btn-xs purple-stripe" href="@Url.Action("Detail", new { id = item.id })"><i class="fa fc-month-view"></i> Detail</a>
-                                            <a href="@Url.Action("Delete", new {id = item.id})" onclick=" return confirm('确认删除吗？'); " class="btn default btn-xs red">
+                                            @if (item.IsDraft == 0)
+                                            {
+                                                <a class="btn default btn-xs purple-stripe" href="@Url.Action("Detail", new {id = item.ArticleId})"><i class="fa fc-month-view"></i> 撤销发布</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn default btn-xs purple-stripe" href="@Url.Action("Detail", new {id = item.ArticleId})"><i class="fa fc-month-view"></i> 查看草稿</a>
+                                                <a class="btn default btn-xs purple-stripe" href="@Url.Action("Detail", new {id = item.ArticleId})"><i class="fa fc-month-view"></i> 发布</a>
+                                            }
+                                            <a class="btn default btn-xs purple-stripe" href="@Url.Action("Edit", new {id = item.ArticleId})"><i class="fa fc-month-view"></i> 编辑</a>
+                                            <a href="@Url.Action("Delete", new {id = item.ArticleId})" onclick=" return confirm('确认删除吗？'); " class="btn default btn-xs red">
                                                 <i class="fa fa-trash-o"></i> Delete
                                             </a>
                                         </td>
@@ -74,8 +91,11 @@
                     <div class="col-md-7 col-sm-12 text-right">
                         @Html.PagedListPager((IPagedList)Model, page => Url.Action("List", new
                         {
-                            page = page,
+                            page,
                             @size = ViewBag.Size,
+                            ViewBag.channelTag,
+                            ViewBag.columnTag,
+                            ViewBag.tagtype
                         }))
                     </div>
                 </div>

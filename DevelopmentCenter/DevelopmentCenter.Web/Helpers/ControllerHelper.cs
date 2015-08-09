@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DevelopmentCenter.Core.Services;
 using DevelopmentCenter.Infrastructure.Services;
 
 namespace DevelopmentCenter.Web.Helpers
@@ -10,10 +11,12 @@ namespace DevelopmentCenter.Web.Helpers
     public class ControllerHelper : Controller
     {
         private readonly ISimpleAccountManager _simpleAccount;
+        private readonly IArticleService _articleService;
 
-        public ControllerHelper(ISimpleAccountManager simpleAccount)
+        public ControllerHelper(ISimpleAccountManager simpleAccount,IArticleService articleService)
         {
             _simpleAccount = simpleAccount;
+            _articleService = articleService;
         }
 
         public ContentResult CResult(int statusCode, string message)
