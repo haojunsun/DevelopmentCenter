@@ -28,6 +28,11 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
                 return View(true);
             }
 
+            Session["Admin"] = username;
+            Session.Timeout = 45;
+            //cookie expires in 24 hours
+            Utils.WriteCookie("admin", currentUser.Name, 1440);
+
             return RedirectToAction("Index", "Home");
         }
 
