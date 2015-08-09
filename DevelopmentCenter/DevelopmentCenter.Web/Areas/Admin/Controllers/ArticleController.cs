@@ -132,20 +132,16 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
 
             if (Request.Files.Count > 0)
             {
-                old.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
-                if (string.IsNullOrEmpty(old.TitleImageUrl))
-                    return Content("<script>alert('图片不能为空');window.location.href='" + Url.Action("Edit", new
-                    {
-                        id = article.ArticleId
-                    }) + "';</script>");
+                article.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
+                if (!string.IsNullOrEmpty(article.TitleImageUrl))
+                    old.TitleImageUrl = article.TitleImageUrl;
             }
-
             _articleService.Update(old);
 
             return Content("<script>alert('编辑" + ViewBag.columnTag + "-" + ViewBag.columnTag + "内容成功');window.location.href='" + Url.Action("List", new
             {
-                ViewBag.channelTag,
-                ViewBag.columnTag,
+                channelTag=old.ChannelTags,
+                columnTag=old.ColumnTags,
                 @tagtype = 1
             }) + "';</script>");
         }
