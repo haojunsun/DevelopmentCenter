@@ -70,9 +70,9 @@ namespace DevelopmentCenter.Core.Services
         public IEnumerable<Article> GetByChannelTag(string tagName, int pageIndex, int pageSize, ref int totalCount)
         {
             var list = (from p in _appDbContext.Articles
-                       where p.ChannelTags.Contains(tagName)
-                       orderby p.CreatedUtc
-                       select p).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                        where p.ChannelTags.Contains(tagName)
+                        orderby p.CreatedUtc descending
+                        select p).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             totalCount = _appDbContext.Articles.Count(x => x.ChannelTags.Contains(tagName));
             return list.ToList();
         }
@@ -81,10 +81,10 @@ namespace DevelopmentCenter.Core.Services
         {
             var list = (from p in _appDbContext.Articles
                         where p.ColumnTags.Contains(tagName)
-                        orderby p.CreatedUtc
+                        orderby p.CreatedUtc descending
                         select p).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             totalCount = _appDbContext.Articles.Count(x => x.ColumnTags.Contains(tagName));
             return list.ToList();
-        }     
+        }
     }
 }

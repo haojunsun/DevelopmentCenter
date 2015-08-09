@@ -59,7 +59,12 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
             if (old == null)
                 return JumpUrl("List", "id错误");
             _articleService.Delete(id);
-            return JumpUrl("List", "删除成功");
+            return Content("<script>alert('删除成功');window.location.href='" + Url.Action("List", new
+            {
+                channelTag = old.ChannelTags,
+                columnTag = old.ColumnTags,
+                @tagtype = 1
+            }) + "';</script>");
         }
 
         [HttpGet]
@@ -140,8 +145,23 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
 
             return Content("<script>alert('编辑" + ViewBag.columnTag + "-" + ViewBag.columnTag + "内容成功');window.location.href='" + Url.Action("List", new
             {
-                channelTag=old.ChannelTags,
-                columnTag=old.ColumnTags,
+                channelTag = old.ChannelTags,
+                columnTag = old.ColumnTags,
+                @tagtype = 1
+            }) + "';</script>");
+        }
+
+
+        public ActionResult Release(int id)
+        {
+            var article = _articleService.Get(id);
+            article.IsDraft = article.IsDraft == 1 ? 0 : 1;
+            article.IsRelease = article.IsDraft == 0 ? 1 : 0;
+            _articleService.Update(article);
+            return Content("<script>alert('操作" + ViewBag.columnTag + "-" + ViewBag.columnTag + "内容成功');window.location.href='" + Url.Action("List", new
+            {
+                channelTag = article.ChannelTags,
+                columnTag = article.ColumnTags,
                 @tagtype = 1
             }) + "';</script>");
         }
