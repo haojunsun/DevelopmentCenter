@@ -99,13 +99,13 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
             if (Request.Files.Count > 0)
             {
                 article.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
-                if (string.IsNullOrEmpty(article.TitleImageUrl))
-                    return Content("<script>alert('图片不能为空');window.location.href='" + Url.Action("Create", new
-                    {
-                        ViewBag.channelTag,
-                        ViewBag.columnTag,
-                        @tagtype = 1
-                    }) + "';</script>");
+                //if (string.IsNullOrEmpty(article.TitleImageUrl))
+                //    return Content("<script>alert('图片不能为空');window.location.href='" + Url.Action("Create", new
+                //    {
+                //        ViewBag.channelTag,
+                //        ViewBag.columnTag,
+                //        @tagtype = 1
+                //    }) + "';</script>");
             }
             _articleService.Add(article);
             ViewBag.channelTag = channelTag;

@@ -1,0 +1,156 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description" content="">
+    <meta name="author" content="nizhanjun,guansheng">
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <title>Example</title>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            <a>
+                文化部民族民间文艺发展中心
+                <img src="~/Content/images/logo1.png" />
+            </a>
+        </h1>
+        <div class="header-rt">
+            <div class="lgrg">
+                <a class="login" href="#">登陆</a>
+                <a class="register" href="#">注册</a>
+            </div>
+            <div class="form-group">
+                <input class="form-input" placeholder="搜索" />
+                <a class="sure">确定</a>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <ul>
+            <li>
+                <a href="@Url.Action("index", "home")">首页</a>
+            </li>
+            <li class="active">
+                <a href="@Url.Action("dwjj", "home")">单位概况</a>
+                <div>
+                    <ul class="cur1">
+                        <li><a href="@Url.Action("dwjj", "home")">单位简介</a></li>
+                        <li><a href="@Url.Action("ldjj", "home")">领导简介</a></li>
+                        <li><a href="@Url.Action("jgsz", "home")">机构设置</a></li>
+                        <li><a href="@Url.Action("tyyjy", "home")">特约研究员</a></li>
+                        <li><a href="@Url.Action("yjzx", "home")">研究中心</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("Kykydt", "home")">科研规划</a>
+                <div>
+                    <ul class="cur2">
+                        <li><a href="@Url.Action("Kykydt", "home")">科研动态</a></li>
+                        <li><a href="@Url.Action("Kykexm", "home")">科研项目</a></li>
+                        <li><a href="@Url.Action("Kyqggh", "home")">全国艺术科研规划</a></li>
+                        <li><a href="@Url.Action("Kyqgwyh", "home")">全国文化艺术资源标准化技术委员会</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("Gczgmzmj", "home")">重大工程</a>
+                <div>
+                    <ul class="cur3">
+                        <li><a href="@Url.Action("Gczgmzmj", "home")">中国民族民间文艺集成志书</a></li>
+                        <li><a href="@Url.Action("Gcjrz", "home")">中国节日志</a></li>
+                        <li><a href="@Url.Action("Gcssbb", "home")">中国史诗百部</a></li>
+                        <li><a href="@Url.Action("Gcgat", "home")">集成志书港澳台</a></li>
+                        <li><a href="@Url.Action("Gcqt", "home")">其他</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("Whzdsy", "home")">文化科技</a>
+                <div>
+                    <ul class="cur4">
+                        <li class="active"><a href="@Url.Action("Whzdsy", "home")">重点实验</a></li>
+                        <li><a href="@Url.Action("Whzyjs", "home")">资源建设</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("Whjlzlby", "home")">文化交流</a>
+                <div>
+                    <ul class="cur5">
+                        <li><a href="@Url.Action("Whjlzlby", "home")">展览表演</a></li>
+                        <li><a href="@Url.Action("Whjlds", "home")">大赛</a></li>
+                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("Zxysx", "home")">专项管理</a>
+                <div>
+                    <ul class="cur6">
+                        <li><a href="@Url.Action("Zxysx", "home")">艺术学工作</a></li>
+                        <li><a href="@Url.Action("Zxjqgl", "home")">节庆管理</a></li>
+                        <li><a href="@Url.Action("Zxbzh", "home")">标准化管理</a></li>
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container survey">
+        <div class="sidebar">
+            <div class="sidebar-top">
+                <span>单位概况</span>
+            </div>
+            <ul>
+                <li><a href="@Url.Action("dwjj", "home")">单位简介</a></li>
+                <li><a href="@Url.Action("ldjj", "home")">领导简介</a></li>
+                <li><a href="@Url.Action("jgsz", "home")">机构设置</a></li>
+                <li class="active"><a href="@Url.Action("tyyjy", "home")">特约研究员</a></li>
+                <li><a href="@Url.Action("yjzx", "home")">研究中心</a></li>
+            </ul>
+        </div>
+        <div class="content-rt survey-tyyjy">
+            <div class="sidemenu">
+                <span>当前位置：</span><a>网站首页</a>&gt;<a>单位概况</a>&gt;<a class="last">特约研究员</a>
+            </div>
+            <div class="article article2">
+                <h2 class="title">特约研究员</h2>
+                <p>
+                    <span><img src="~/Content/images/20140725100408.jpg" /></span>
+                    <strong>李松主任简介</strong>
+                    李松，中共党员，“中心”主任（正局级）、中心党支部书记。国家民族民间文化保护工程领导小组成员。国家社科基金重大项目“中国民族民间文艺集成志书编纂出版工程”、国家科技基础性工作专项项目“中国民族民间文艺基础资源数据库工程”、国家社会公益研究专项项目“中国民族民间文艺基础资源拯救项目”、中国民族...[详细]
+                </p>
+                <div class="clear"></div>
+                <p>
+                    <span><img src="~/Content/images/20140725100408.jpg" /></span>
+                    <strong>张刚副主任简介</strong>
+                    张  刚，男，文化部民族民间文艺发展中心副主任；副研究员；戏剧戏曲学博士；中国戏曲音乐学会副会长，中国民族博物馆学会常务理事，中国服饰研究会常务理事。国家社科资助重大项目《中国戏曲音乐集成》总编辑部主任；国家科技部基础性项目“中国民族民间文艺基础资源数据库”、“中国民族民间文艺基础资源拯救”课题组主要成员
+                </p>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <ul class="ft-nav">
+            <li><a>关于我们</a></li>|
+            <li><a>招聘信息</a></li>|
+            <li><a>联系我们</a></li>|
+            <li><a>网站地图</a></li>
+        </ul>
+        <p>Copyright &copy; ALL Rights 文化部民族民间文艺发展中心 版权所有 京ICP备08002050号</p>
+    </div>
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/site.js"></script>
+</body>
+</html>
+
