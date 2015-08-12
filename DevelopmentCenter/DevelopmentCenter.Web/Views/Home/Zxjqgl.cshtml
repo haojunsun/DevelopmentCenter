@@ -150,7 +150,7 @@
                 </ul>
                 <div class="pagination">
                     <span>  共@(Model.TotalItemCount)条,每页@(Model.PageSize)条,当前@(Model.PageNumber)/@(Model.PageCount)页</span>
-                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Zxysx", new
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Zxjqgl", new
                         {
                             page,
                             @size = ViewBag.Size,
