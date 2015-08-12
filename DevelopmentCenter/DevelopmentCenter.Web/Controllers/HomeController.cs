@@ -172,95 +172,166 @@ namespace DevelopmentCenter.Web.Controllers
 
         //重大工程--------------start
         //中国民族民间文艺集成志书
-        public ActionResult Gczgmzmj()
+        public ActionResult Gczgmzmj(string channelTag = "重大工程", string columnTag = "中国民族民间文艺集成志书", int tagtype = 1, int page = 1, int size = 20)
         {
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
 
-            return View();
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //中国节日志
-        public ActionResult Gcjrz()
+        public ActionResult Gcjrz(string channelTag = "重大工程", string columnTag = "中国节日志", int tagtype = 1, int page = 1, int size = 20)
         {
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
 
-            return View();
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //中国史诗百部
-        public ActionResult Gcssbb()
+        public ActionResult Gcssbb(string channelTag = "重大工程", string columnTag = "中国史诗百部", int tagtype = 1, int page = 1, int size = 20)
         {
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
 
-            return View();
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //集成志书港澳台
-        public ActionResult Gcgat()
+        public ActionResult Gcgat(string channelTag = "重大工程", string columnTag = "集成志书港澳台", int tagtype = 1, int page = 1, int size = 20)
         {
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
 
-            return View();
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //其他
-        public ActionResult Gcqt()
+        public ActionResult Gcqt(string channelTag = "重大工程", string columnTag = "重大工程其他", int tagtype = 1, int page = 1, int size = 20)
         {
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
 
-            return View();
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //重大工程--------------end
 
         //文化科技-------------start
         //重点实验
-        public ActionResult Whzdsy()
+        public ActionResult Whzdsy(string channelTag = "文化科技", string columnTag = "重点实验室", int tagtype = 1, int page = 1, int size = 20)
         {
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
 
-            return View();
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //资源建设
-        public ActionResult Whzyjs()
+        public ActionResult Whzyjs(string channelTag = "文化科技", string columnTag = "数据库", int tagtype = 1, int page = 1, int size = 20)
         {
+            ViewBag.columnTag = columnTag;
 
-            return View();
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //文化科技-------------end
 
         //文化交流------------start
-        //展览表演
-        public ActionResult Whjlzlby(int page = 1, int size = 10)
+        //展览展演
+        public ActionResult Whjlzlby(string channelTag = "文化交流", string columnTag = "展览展演", int tagtype = 1, int page = 1, int size = 20)
         {
-            ViewBag.channelTag = "文化交流";
-            ViewBag.columnTag = "展览展演";
+            ViewBag.columnTag = columnTag;
+
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var first = _articleService.GetFirst("展览展演", "文化交流");
-            ViewBag.First = first;
+
             var list = new List<Article>();
-            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "展览展演", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
         //大赛
-        public ActionResult Whjlds(int page = 1, int size = 10)
+        public ActionResult Whjlds(string channelTag = "文化交流", string columnTag = "大赛", int tagtype = 1, int page = 1, int size = 20)
         {
-            ViewBag.channelTag = "文化交流";
-            ViewBag.columnTag = "大赛";
+            ViewBag.columnTag = columnTag;
+
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var first = _articleService.GetFirst("大赛", "文化交流");
-            ViewBag.First = first;
+
             var list = new List<Article>();
-            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "大赛", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
         //其他
-        public ActionResult Whjlqt(int page = 1, int size = 10)
+        public ActionResult Whjlqt(string channelTag = "文化交流", string columnTag = "其他", int tagtype = 1, int page = 1, int size = 20)
         {
-            ViewBag.channelTag = "文化交流";
-            ViewBag.columnTag = "其他";
+            ViewBag.columnTag = columnTag;
+
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var first = _articleService.GetFirst("其他", "文化交流");
-            ViewBag.First = first;
+
             var list = new List<Article>();
-            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "其他", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
@@ -268,48 +339,54 @@ namespace DevelopmentCenter.Web.Controllers
 
         //专项管理-----------start
         //艺术学工作
-        public ActionResult Zxysx(int page = 1, int size = 10)
+        public ActionResult Zxysx(string channelTag = "专项管理", string columnTag = "艺术学工作", int tagtype = 1, int page = 1, int size = 20)
         {
-            ViewBag.channelTag = "专项管理";
-            ViewBag.columnTag = "艺术学工作";
+            ViewBag.columnTag = columnTag;
+
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var first = _articleService.GetFirst("艺术学工作", "专项管理");
-            ViewBag.First = first;
+
             var list = new List<Article>();
-            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "艺术学工作", "专项管理", pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
         //节庆管理
-        public ActionResult Zxjqgl(int page = 1, int size = 10)
+        public ActionResult Zxjqgl(string channelTag = "专项管理", string columnTag = "节庆管理", int tagtype = 1, int page = 1, int size = 20)
         {
-            ViewBag.channelTag = "专项管理";
-            ViewBag.columnTag = "节庆管理";
+            ViewBag.columnTag = columnTag;
+
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var first = _articleService.GetFirst("节庆管理", "专项管理");
-            ViewBag.First = first;
+
             var list = new List<Article>();
-            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "节庆管理", "专项管理", pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
 
         //标准化管理
-        public ActionResult Zxbzh(int page = 1, int size = 10)
+        public ActionResult Zxbzh(string channelTag = "专项管理", string columnTag = "标准化建设", int tagtype = 1, int page = 1, int size = 20)
         {
-            ViewBag.channelTag = "专项管理";
-            ViewBag.columnTag = "标准化管理";
+            ViewBag.columnTag = columnTag;
+
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var first = _articleService.GetFirst("标准化管理", "专项管理");
-            ViewBag.First = first;
+
             var list = new List<Article>();
-            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "标准化管理", "专项管理", pageIndex, pageSize, ref totalCount).ToList();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }

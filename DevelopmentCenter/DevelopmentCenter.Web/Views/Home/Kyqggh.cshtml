@@ -90,7 +90,7 @@
                 <a href="@Url.Action("Whjlzlby", "home")">文化交流</a>
                 <div>
                     <ul class="cur5">
-                        <li><a href="@Url.Action("Whjlzlby", "home")">展览表演</a></li>
+                        <li><a href="@Url.Action("Whjlzlby", "home")">展览展演</a></li>
                         <li><a href="@Url.Action("Whjlds", "home")">大赛</a></li>
                         <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li>
                     </ul>
@@ -126,8 +126,12 @@
                 <span>当前位置：</span><a>网站首页</a>&gt;<a>科研规划</a>&gt;<a class="last">全国艺术科研规划</a>
             </div>
             <div class="hot-news">
-                <h3>热点:<span>全国艺术科研规划</span></h3>
-                <div><a>@Model.Where(item => item != null).FirstOrDefault().Body<span> ......进入></span></a></div>
+                @if (Model != null)
+                {
+                    <h3>热点:<span>@Model.Where(item => item != null).FirstOrDefault().Title</span></h3>
+
+                    <div><a>@Model.Where(item => item != null).FirstOrDefault().Body<span> ......进入></span></a></div>
+                }
             </div>
             <div class="article">
                 <h2 class="title">全国艺术科研规划</h2>
@@ -140,12 +144,11 @@
                         }
                     }
                 </ul>
-                <div class="row">
-                    <div class="col-md-5 col-sm-12">
+                <div class="pagination">
+                    <span>
                         共@(Model.TotalItemCount)条,每页@(Model.PageSize)条,当前@(Model.PageNumber)/@(Model.PageCount)页
-                    </div>
-                    <div class="col-md-7 col-sm-12 text-right">
-                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Ldjj", "Home", new
+                    </span>
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("kyqggh", "Home", new
                         {
                             page,
                             @size = ViewBag.Size,
@@ -153,7 +156,6 @@
                             ViewBag.columnTag,
                             ViewBag.tagtype
                         }))
-                    </div>
                 </div>
             </div>
         </div>
@@ -165,7 +167,7 @@
             <li><a>联系我们</a></li>|
             <li><a>网站地图</a></li>
         </ul>
-        <p>Copyright &copy; ALL Rights 文化部民族民间文艺发展中心 版权所有 京ICP备08002050号</p>
+        <p>Copyright &copy; ALL Rights 文化部民族民间文艺发展中心 版权所有 京ICP备*********号</p>
     </div>
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/site.js"></script>

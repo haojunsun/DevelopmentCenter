@@ -22,7 +22,7 @@ namespace DevelopmentCenter.Core.Services
         IEnumerable<Article> GetByChannelTag(string tagName, int pageIndex, int pageSize, ref int totalCount);
         IEnumerable<Article> GetByColumnTag(string tagName, int pageIndex, int pageSize, ref int totalCount);
 
-        IEnumerable<Article> GetColumn(int exid, string tagName,string channel, int pageIndex, int pageSize, ref int totalCount);
+        IEnumerable<Article> GetColumn(int exid, string tagName, string channel, int pageIndex, int pageSize, ref int totalCount);
         Article GetFirst(string tagName, string channel);
     }
 
@@ -83,14 +83,14 @@ namespace DevelopmentCenter.Core.Services
         public IEnumerable<Article> GetByColumnTag(string tagName, int pageIndex, int pageSize, ref int totalCount)
         {
             var list = (from p in _appDbContext.Articles
-                        where p.ColumnTags.Contains(tagName)
+                        where p.ColumnTags == tagName
                         orderby p.CreatedUtc descending
                         select p).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            totalCount = _appDbContext.Articles.Count(x => x.ColumnTags.Contains(tagName));
+            totalCount = _appDbContext.Articles.Count(x => x.ColumnTags == tagName);
             return list.ToList();
         }
 
-        public IEnumerable<Article> GetColumn(int exid, string tagName,string channel, int pageIndex, int pageSize, ref int totalCount)
+        public IEnumerable<Article> GetColumn(int exid, string tagName, string channel, int pageIndex, int pageSize, ref int totalCount)
         {
             var list = (from p in _appDbContext.Articles
                         where p.ColumnTags.Contains(tagName) && p.IsDraft == 0 && p.IsRelease == 1 && p.ArticleId != exid && p.ChannelTags.Contains(channel)
@@ -100,9 +100,9 @@ namespace DevelopmentCenter.Core.Services
             return list.ToList();
         }
 
-        public Article GetFirst(string tagName,string channel)
+        public Article GetFirst(string tagName, string channel)
         {
-            return _appDbContext.Articles.Where(x => x.ColumnTags.Contains(tagName) && x.IsDraft == 0 && x.IsRelease == 1  && x.ChannelTags.Contains(channel)).OrderByDescending(x => x.CreatedUtc).FirstOrDefault();
+            return _appDbContext.Articles.Where(x => x.ColumnTags.Contains(tagName) && x.IsDraft == 0 && x.IsRelease == 1 && x.ChannelTags.Contains(channel)).OrderByDescending(x => x.CreatedUtc).FirstOrDefault();
         }
     }
 }
