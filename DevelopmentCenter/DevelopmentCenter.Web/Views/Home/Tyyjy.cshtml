@@ -1,4 +1,7 @@
-﻿
+﻿@using PagedList;
+@using PagedList.Mvc
+
+@model PagedList.StaticPagedList<DevelopmentCenter.Core.Models.Article>
 @{
     Layout = null;
 }
@@ -125,18 +128,33 @@
             </div>
             <div class="article article2">
                 <h2 class="title">特约研究员</h2>
-                <p>
-                    <span><img src="~/Content/images/20140725100408.jpg" /></span>
-                    <strong>李松主任简介</strong>
-                    李松，中共党员，“中心”主任（正局级）、中心党支部书记。国家民族民间文化保护工程领导小组成员。国家社科基金重大项目“中国民族民间文艺集成志书编纂出版工程”、国家科技基础性工作专项项目“中国民族民间文艺基础资源数据库工程”、国家社会公益研究专项项目“中国民族民间文艺基础资源拯救项目”、中国民族...[详细]
-                </p>
-                <div class="clear"></div>
-                <p>
-                    <span><img src="~/Content/images/20140725100408.jpg" /></span>
-                    <strong>张刚副主任简介</strong>
-                    张  刚，男，文化部民族民间文艺发展中心副主任；副研究员；戏剧戏曲学博士；中国戏曲音乐学会副会长，中国民族博物馆学会常务理事，中国服饰研究会常务理事。国家社科资助重大项目《中国戏曲音乐集成》总编辑部主任；国家科技部基础性项目“中国民族民间文艺基础资源数据库”、“中国民族民间文艺基础资源拯救”课题组主要成员
-                </p>
-                <div class="clear"></div>
+                @if (Model != null)
+                {
+                    foreach (var item in Model.Where(item => item != null))
+                    {
+                        <p>
+                            <span><img src="~/Uploads/@item.TitleImageUrl" /></span>
+                            <strong>@item.Title</strong>
+                            @item.Body
+                        </p>
+                        <div class="clear"></div>
+                    }
+                }
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-sm-12">
+                    共@(Model.TotalItemCount)条,每页@(Model.PageSize)条,当前@(Model.PageNumber)/@(Model.PageCount)页
+                </div>
+                <div class="col-md-7 col-sm-12 text-right">
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Tyyjy", "Home", new
+                        {
+                            page,
+                            @size = ViewBag.Size,
+                            ViewBag.channelTag,
+                            ViewBag.columnTag,
+                            ViewBag.tagtype
+                        }))
+                </div>
             </div>
         </div>
     </div>
@@ -153,4 +171,3 @@
     <script src="~/Scripts/site.js"></script>
 </body>
 </html>
-
