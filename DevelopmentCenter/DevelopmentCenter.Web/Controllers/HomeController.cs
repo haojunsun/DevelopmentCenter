@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DevelopmentCenter.Core.Models;
+using PagedList;
 
 namespace DevelopmentCenter.Web.Controllers
 {
@@ -218,22 +220,49 @@ namespace DevelopmentCenter.Web.Controllers
 
         //文化交流------------start
         //展览表演
-        public ActionResult Whjlzlby()
+        public ActionResult Whjlzlby(int page = 1, int size = 10)
         {
-
-            return View();
+            ViewBag.channelTag = "文化交流";
+            ViewBag.columnTag = "展览展演";
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+            var fitst = _articleService.GetFirst("展览展演", "文化交流");
+            ViewBag.First = fitst;
+            var list = new List<Article>();
+            list = _articleService.GetColumn(fitst.ArticleId, "展览展演", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //大赛
-        public ActionResult Whjlds()
+        public ActionResult Whjlds(int page = 1, int size = 10)
         {
-
-            return View();
+            ViewBag.channelTag = "文化交流";
+            ViewBag.columnTag = "大赛";
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+            var fitst = _articleService.GetFirst("大赛", "文化交流");
+            ViewBag.First = fitst;
+            var list = new List<Article>();
+            list = _articleService.GetColumn(fitst.ArticleId, "大赛", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //其他
-        public ActionResult Whjlqt()
+        public ActionResult Whjlqt(int page = 1, int size = 10)
         {
-
-            return View();
+            ViewBag.channelTag = "文化交流";
+            ViewBag.columnTag = "其他";
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+            var fitst = _articleService.GetFirst("其他", "文化交流");
+            ViewBag.First = fitst;
+            var list = new List<Article>();
+            list = _articleService.GetColumn(fitst.ArticleId, "其他", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //文化交流------------end
 
