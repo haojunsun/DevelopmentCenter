@@ -127,10 +127,15 @@
             <div class="sidemenu">
                 <span>当前位置：</span><a>网站首页</a>&gt;<a>文化交流</a>&gt;<a class="last">展览表演</a>
             </div>
-            <div class="hot-news">
-                <h3>热点:<span>@(first.Title)</span></h3>
-                <div> @(first.Body) <a><span> ......进入></span></a></div>
-            </div>
+            @if (first != null)
+            {
+                <div class="hot-news">
+                    <h3>热点:<span>@(first.Title)</span></h3>
+                    <div>
+                        @(first.Body) <a><span> ......进入></span></a>
+                    </div>
+                </div>
+            }
             <div class="article">
                 <h2 class="title">展览表演</h2>
                 <ul>

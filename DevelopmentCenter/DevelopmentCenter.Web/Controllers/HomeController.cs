@@ -227,10 +227,10 @@ namespace DevelopmentCenter.Web.Controllers
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var fitst = _articleService.GetFirst("展览展演", "文化交流");
-            ViewBag.First = fitst;
+            var first = _articleService.GetFirst("展览展演", "文化交流");
+            ViewBag.First = first;
             var list = new List<Article>();
-            list = _articleService.GetColumn(fitst.ArticleId, "展览展演", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "展览展演", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
@@ -242,10 +242,10 @@ namespace DevelopmentCenter.Web.Controllers
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var fitst = _articleService.GetFirst("大赛", "文化交流");
-            ViewBag.First = fitst;
+            var first = _articleService.GetFirst("大赛", "文化交流");
+            ViewBag.First = first;
             var list = new List<Article>();
-            list = _articleService.GetColumn(fitst.ArticleId, "大赛", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "大赛", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
@@ -257,10 +257,10 @@ namespace DevelopmentCenter.Web.Controllers
             var pageIndex = page;
             var pageSize = size;
             var totalCount = 0;
-            var fitst = _articleService.GetFirst("其他", "文化交流");
-            ViewBag.First = fitst;
+            var first = _articleService.GetFirst("其他", "文化交流");
+            ViewBag.First = first;
             var list = new List<Article>();
-            list = _articleService.GetColumn(fitst.ArticleId, "其他", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
+            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "其他", "文化交流", pageIndex, pageSize, ref totalCount).ToList();
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
@@ -268,22 +268,50 @@ namespace DevelopmentCenter.Web.Controllers
 
         //专项管理-----------start
         //艺术学工作
-        public ActionResult Zxysx()
+        public ActionResult Zxysx(int page = 1, int size = 10)
         {
-
-            return View();
+            ViewBag.channelTag = "专项管理";
+            ViewBag.columnTag = "艺术学工作";
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+            var first = _articleService.GetFirst("艺术学工作", "专项管理");
+            ViewBag.First = first;
+            var list = new List<Article>();
+            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "艺术学工作", "专项管理", pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //节庆管理
-        public ActionResult Zxjqgl()
+        public ActionResult Zxjqgl(int page = 1, int size = 10)
         {
-
-            return View();
+            ViewBag.channelTag = "专项管理";
+            ViewBag.columnTag = "节庆管理";
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+            var first = _articleService.GetFirst("节庆管理", "专项管理");
+            ViewBag.First = first;
+            var list = new List<Article>();
+            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "节庆管理", "专项管理", pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
-        //标准化管理
-        public ActionResult Zxbzh()
-        {
 
-            return View();
+        //标准化管理
+        public ActionResult Zxbzh(int page = 1, int size = 10)
+        {
+            ViewBag.channelTag = "专项管理";
+            ViewBag.columnTag = "标准化管理";
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+            var first = _articleService.GetFirst("标准化管理", "专项管理");
+            ViewBag.First = first;
+            var list = new List<Article>();
+            list = _articleService.GetColumn(first == null ? 0 : first.ArticleId, "标准化管理", "专项管理", pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
         }
         //专项管理-----------end
     }
