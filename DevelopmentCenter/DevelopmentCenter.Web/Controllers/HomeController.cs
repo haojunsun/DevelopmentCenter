@@ -107,7 +107,7 @@ namespace DevelopmentCenter.Web.Controllers
 
         //科研规划---------------start
         //科研动态
-        public ActionResult Kykydt(string channelTag = "单位概况", string columnTag = "研究中心", int tagtype = 1, int page = 1, int size = 20)
+        public ActionResult Kykydt(string channelTag = "科研规划", string columnTag = "科研动态", int tagtype = 1, int page = 1, int size = 20)
         {
             var pageIndex = page;
             var pageSize = size;
@@ -122,7 +122,7 @@ namespace DevelopmentCenter.Web.Controllers
             return View(personsAsIPagedList);
         }
         //科研项目
-        public ActionResult Kykexm(string channelTag = "单位概况", string columnTag = "研究中心", int tagtype = 1, int page = 1, int size = 20)
+        public ActionResult Kykexm(string channelTag = "科研规划", string columnTag = "科研项目", int tagtype = 1, int page = 1, int size = 20)
         {
             var pageIndex = page;
             var pageSize = size;
@@ -137,7 +137,7 @@ namespace DevelopmentCenter.Web.Controllers
             return View(personsAsIPagedList);
         }
         //全国艺术科研规划
-        public ActionResult Kyqggh(string channelTag = "单位概况", string columnTag = "研究中心", int tagtype = 1, int page = 1, int size = 20)
+        public ActionResult Kyqggh(string channelTag = "科研规划", string columnTag = "全国艺术科研规划", int tagtype = 1, int page = 1, int size = 20)
         {
             var pageIndex = page;
             var pageSize = size;
@@ -152,7 +152,7 @@ namespace DevelopmentCenter.Web.Controllers
             return View(personsAsIPagedList);
         }
         //全国文化艺术资源标准化技术委员会
-        public ActionResult Kyqgwyh(string channelTag = "单位概况", string columnTag = "研究中心", int tagtype = 1, int page = 1, int size = 20)
+        public ActionResult Kyqgwyh(string channelTag = "科研规划", string columnTag = "全国文化艺术资源标准化技术委员会", int tagtype = 1, int page = 1, int size = 20)
         {
             var pageIndex = page;
             var pageSize = size;

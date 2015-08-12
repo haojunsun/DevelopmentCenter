@@ -1,4 +1,7 @@
-﻿
+﻿@using PagedList;
+@using PagedList.Mvc
+
+@model PagedList.StaticPagedList<DevelopmentCenter.Core.Models.Article>
 @{
     Layout = null;
 }
@@ -124,29 +127,33 @@
             </div>
             <div class="hot-news">
                 <h3>热点:<span>全国艺术科研规划</span></h3>
-                <div><a>课题名称   舞台幕布的标准研究   剧场建设过程要点的研究与分析   便携式小型灯光控制系统研究   文化方舱可行性研究   移动式公共文化方舱系统 事业单位体制机制及政策研究 全国网络游戏监控系统的研究   书画真伪科学鉴定系统   中国画艺术生态研究   中国画新材质新技法画雪研究   数码影像保护中国民间表演艺术及传统手工艺   文化行业中的标准化问题理论与实证研究   文化标准化中长期计划   文化馆美术馆建筑规范   剧院等级分类标准 <span> ......进入></span></a></div>
+                <div><a>@Model.Where(item => item != null).FirstOrDefault().Body<span> ......进入></span></a></div>
             </div>
             <div class="article">
                 <h2 class="title">全国艺术科研规划</h2>
                 <ul>
-                    <li><a>国家社会科学基金艺术学项目申报、评审书</a></li>
-                    <li><a>全国艺术科学规划历年立项课题汇编（1983——2008）</a></li>
-                    <li><a>全国艺术科学规划课题管理办法</a></li>
-                    <li><a>关于印发《国家社会科学基金项目经费管理办法》的通知</a></li>
-                    <li><a>国家社会科学基金艺术学项目2009年度课题指南</a></li>
-                    <li><a>2009年度国家社会科学基金艺术学项目申报公告</a></li>
-                    <li><a>2008年度国家社会科学基金艺术学项目申报公告</a></li>
-                    <li><a>全国艺术科学“十一五”规划2007年度课题申报公告</a></li>
-                    <li><a>文化部关于印发《全国艺术科学规划课题管理办法》的通知</a></li>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model.Where(item => item != null))
+                        {
+                            <li><a>@item.Title</a></li>
+                        }
+                    }
                 </ul>
-                <div class="pagination">
-                    <span>共5页</span>
-                    <a>上一页</a>
-                    <ul>
-                        <li><a>1</a></li>
-                    </ul>
-                    <a>下一页</a>
-                    <div>转到第<input />页</div>
+                <div class="row">
+                    <div class="col-md-5 col-sm-12">
+                        共@(Model.TotalItemCount)条,每页@(Model.PageSize)条,当前@(Model.PageNumber)/@(Model.PageCount)页
+                    </div>
+                    <div class="col-md-7 col-sm-12 text-right">
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Ldjj", "Home", new
+                        {
+                            page,
+                            @size = ViewBag.Size,
+                            ViewBag.channelTag,
+                            ViewBag.columnTag,
+                            ViewBag.tagtype
+                        }))
+                    </div>
                 </div>
             </div>
         </div>
