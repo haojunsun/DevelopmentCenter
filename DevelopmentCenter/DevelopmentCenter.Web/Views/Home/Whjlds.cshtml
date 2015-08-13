@@ -127,7 +127,6 @@
             <div class="sidemenu">
                 <span>当前位置：</span><a>网站首页</a>&gt;<a>文化交流</a>&gt;<a class="last">大赛</a>
             </div>
-            <div class="hot-news">
                 <div class="hot-news">
                     @if (Model != null)
                     {
@@ -136,7 +135,6 @@
                         <div><a href="@Url.Action("Detail", "home", new { id = Model.Where(item => item != null).FirstOrDefault().ArticleId })">@Model.Where(item => item != null).FirstOrDefault().Body<span> ......进入></span></a></div>
                     }
                 </div>
-            </div>
             <div class="article">
                 <h2 class="title">大赛</h2>
                 <ul>

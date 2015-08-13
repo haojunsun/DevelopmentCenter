@@ -28,6 +28,7 @@ namespace DevelopmentCenter.Web.Controllers
             ViewBag.zxtongxun = _articleService.List().Where(x => x.ColumnTags == "中心快讯").OrderByDescending(x => x.CreatedUtc).Take(8).ToList();
             ViewBag.xwbolan = _articleService.List().Where(x => x.ColumnTags == "新闻博览").OrderByDescending(x => x.CreatedUtc).Take(8).ToList();
             ViewBag.yqlianjie = _articleService.List().Where(x => x.ColumnTags == "友情连接").OrderByDescending(x => x.CreatedUtc).Take(4).ToList();
+            ViewBag.zyxz = _articleService.List().Where(x => x.ColumnTags == "下载中心").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
             return View();
         }
 
