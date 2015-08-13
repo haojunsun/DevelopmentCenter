@@ -138,7 +138,6 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
             old.ManagerName = _simpleAccount.GetUserElement().Name;
             old.IsDraft = article.IsDraft;
             old.IsRelease = old.IsDraft == 0 ? 1 : 0;
-
             HttpPostedFileBase hp = Request.Files["file1"];
 
             if (Request.Files.Count > 0)
@@ -152,6 +151,7 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
                     if (!string.IsNullOrEmpty(article.OtherImageUrl))
                         old.OtherImageUrl = article.OtherImageUrl;
                 }
+
             }
             _articleService.Update(old);
 
