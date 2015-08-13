@@ -31,9 +31,9 @@
                 <p>您好欢迎登陆！<a>退出</a></p>
             </div>
             @*<div class="form-group">
-                <input class="form-input" placeholder="搜索" />
-                <a class="sure">确定</a>
-            </div>*@
+                    <input class="form-input" placeholder="搜索" />
+                    <a class="sure">确定</a>
+                </div>*@
         </div>
     </div>
     <div class="nav">
@@ -114,12 +114,15 @@
     <div class="container home">
         <div class="banner">
             <div class="carousel">
-                @for (int i = 0; i < ViewBag.lunbotu.Count; i++)
+                @if (ViewBag.lunbotu != null)
                 {
-                    <div class="carou">
-                        <img src="~/Uploads/@ViewBag.lunbotu[i].TitleImageUrl" title="banner" alt="banner">
-                        <div class="tips">@ViewBag.lunbotu[i].Body</div>
-                    </div>
+                    for (int i = 0; i < ViewBag.lunbotu.Count; i++)
+                    {
+                        <div class="carou">
+                            <img src="~/Uploads/@ViewBag.lunbotu[i].TitleImageUrl" title="banner" alt="banner">
+                            <div class="tips">@ViewBag.lunbotu[i].Body</div>
+                        </div>
+                    }
                 }
             </div>
             <div class="banner-left">
@@ -127,13 +130,16 @@
                     通知公告
                 </div>
                 <ul>
-                    @for (int i = 0; i < ViewBag.tzgonggao.Count; i++)
+                    @if (ViewBag.tzgonggao != null)
                     {
-                        <li>
-                            <a href="@Url.Action("Detail", "home", new { id = ViewBag.tzgonggao[i].ArticleId })">
-                                @ViewBag.tzgonggao[i].Title
-                            </a>
-                        </li>
+                        for (int i = 0; i < ViewBag.tzgonggao.Count; i++)
+                        {
+                            <li>
+                                <a href="@Url.Action("Detail", "home", new { id = ViewBag.tzgonggao[i].ArticleId })">
+                                    @ViewBag.tzgonggao[i].Title
+                                </a>
+                            </li>
+                        }
                     }
                 </ul>
             </div>
@@ -146,9 +152,12 @@
                     <div class="dwld-title">
                         单位领导
                     </div>
-                    @for (int i = 0; i < ViewBag.zxlingdao.Count; i++)
+                    @if (ViewBag.zxlingdao != null)
                     {
-                        <a href="#">@ViewBag.zxlingdao[i].Body：@ViewBag.zxlingdao[i].Title</a>
+                        for (int i = 0; i < ViewBag.zxlingdao.Count; i++)
+                        {
+                            <a href="#">@ViewBag.zxlingdao[i].Body：@ViewBag.zxlingdao[i].Title</a>
+                        }
                     }
                 </div>
                 <div class="dwld2">
@@ -156,9 +165,12 @@
                         机构设置
                     </div>
                     <img src="~/Content/images/1406010976.jpg" width="100%">
-                    @for (int i = 0; i < ViewBag.jgshezhi.Count; i++)
+                    @if (ViewBag.jgshezhi != null)
                     {
-                        <a href="@Url.Action("Detail", "home", new { id = ViewBag.jgshezhi[i].ArticleId })">@ViewBag.jgshezhi[i].Title</a>
+                        for (int i = 0; i < ViewBag.jgshezhi.Count; i++)
+                        {
+                            <a href="@Url.Action("Detail", "home", new { id = ViewBag.jgshezhi[i].ArticleId })">@ViewBag.jgshezhi[i].Title</a>
+                        }
                     }
                 </div>
                 <div class="dwld2">
@@ -166,9 +178,12 @@
                         资源下载
                     </div>
                     <img src="~/Content/images/1406010979.jpg" width="100%">
-                    @for (int i = 0; i < ViewBag.zyxz.Count; i++)
+                    @if (ViewBag.zyxz != null)
                     {
-                        <a href="@Url.Action("Detail", "home", new { id = ViewBag.zyxz[i].ArticleId })">@ViewBag.zyxz[i].Title</a>
+                        for (int i = 0; i < ViewBag.zyxz.Count; i++)
+                        {
+                            <a href="@Url.Action("Detail", "home", new { id = ViewBag.zyxz[i].ArticleId })">@ViewBag.zyxz[i].Title</a>
+                        }
                     }
                 </div>
 
@@ -182,20 +197,26 @@
                         <a href="#">更多>></a>
                     </div>
                     <div href="#" class="text-picche">
-                        <a href="@Url.Action("Detail", "home", new { id = ViewBag.zxtongxun[0].ArticleId })">
-                            <img src="~/Uploads/@ViewBag.zxtongxun[0].TitleImageUrl">
-                            <p>@ViewBag.zxtongxun[0].Title</p>
-                        </a>
+                        @if (ViewBag.zxtongxun != null)
+                        {
+                            <a href="@Url.Action("Detail", "home", new { id = ViewBag.zxtongxun[0].ArticleId })">
+                                <img src="~/Uploads/@ViewBag.zxtongxun[0].TitleImageUrl">
+                                <p>@ViewBag.zxtongxun[0].Title</p>
+                            </a>
+                        }
                     </div>
                     <ul>
-                        @for (int i = 1; i < ViewBag.zxtongxun.Count; i++)
+                        @if (ViewBag.zxtongxun != null)
                         {
-                            <li>
-                                <a href="@Url.Action("Detail", "home", new { id = ViewBag.zxtongxun[i].ArticleId })">
-                                    @ViewBag.zxtongxun[i].Title
-                                    <span>[@ViewBag.zxtongxun[i].CreatedUtc]</span>
-                                </a>
-                            </li>
+                            for (int i = 1; i < ViewBag.zxtongxun.Count; i++)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Detail", "home", new { id = ViewBag.zxtongxun[i].ArticleId })">
+                                        @ViewBag.zxtongxun[i].Title
+                                        <span>[@ViewBag.zxtongxun[i].CreatedUtc]</span>
+                                    </a>
+                                </li>
+                            }
                         }
                     </ul>
                 </div>
@@ -206,20 +227,26 @@
                         <a href="#">更多>></a>
                     </div>
                     <div href="#" class="text-picche">
-                        <a href="@Url.Action("Detail", "home", new { id = ViewBag.xwbolan[0].ArticleId })">
-                            <img src="~/Uploads/@ViewBag.xwbolan[0].TitleImageUrl">
-                            <p>@ViewBag.xwbolan[0].Title</p>
-                        </a>
+                        @if (ViewBag.xwbolan != null)
+                        {
+                            <a href="@Url.Action("Detail", "home", new { id = ViewBag.xwbolan[0].ArticleId })">
+                                <img src="~/Uploads/@ViewBag.xwbolan[0].TitleImageUrl">
+                                <p>@ViewBag.xwbolan[0].Title</p>
+                            </a>
+                        }
                     </div>
                     <ul>
-                        @for (int i = 1; i < ViewBag.xwbolan.Count; i++)
+                        @if (ViewBag.xwbolan != null)
                         {
-                            <li>
-                                <a href="@Url.Action("Detail", "home", new { id = ViewBag.xwbolan[i].ArticleId })">
-                                    @ViewBag.xwbolan[i].Title
-                                    <span>[@ViewBag.xwbolan[i].CreatedUtc]</span>
-                                </a>
-                            </li>
+                            for (int i = 1; i < ViewBag.xwbolan.Count; i++)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Detail", "home", new { id = ViewBag.xwbolan[i].ArticleId })">
+                                        @ViewBag.xwbolan[i].Title
+                                        <span>[@ViewBag.xwbolan[i].CreatedUtc]</span>
+                                    </a>
+                                </li>
+                            }
                         }
                     </ul>
                 </div>
@@ -233,9 +260,12 @@
         <div class="yqlj">
             <h3>友情链接</h3>
             <div class="text-wenbing">
-                @for (int i = 0; i < ViewBag.yqlianjie.Count; i++)
+                @if (ViewBag.yqlianjie != null)
                 {
-                    <a href="@ViewBag.yqlianjie[i].Body">@ViewBag.yqlianjie[i].Title</a>
+                    for (int i = 0; i < ViewBag.yqlianjie.Count; i++)
+                    {
+                        <a href="@ViewBag.yqlianjie[i].Body">@ViewBag.yqlianjie[i].Title</a>
+                    }
                 }
             </div>
         </div>

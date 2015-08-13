@@ -129,7 +129,7 @@
             <div class="article article1">
                 <h2 class="title">机构设置</h2>
                 <ul>
-                    @if (Model != null)
+                    @if (Model != null&&Model.Count != 0)
                     {
                         foreach (var item in Model.Where(item => item != null))
                         {

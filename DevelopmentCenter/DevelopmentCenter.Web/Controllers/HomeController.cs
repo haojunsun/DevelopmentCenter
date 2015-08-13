@@ -104,12 +104,15 @@ namespace DevelopmentCenter.Web.Controllers
         //详情页
         public ActionResult Detail(int? id = -1)
         {
-            if (id == -1) {
+            if (id == -1)
+            {
                 ViewBag.Detail = null;
-            }else{
+            }
+            else
+            {
                 ViewBag.Detail = _articleService.List().Where(x => x.ArticleId == id).FirstOrDefault();
             }
-            ViewBag.Newlist = _articleService.List().Where(x=>x.ColumnTags!="下载中心").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
+            ViewBag.Newlist = _articleService.List().Where(x => x.ColumnTags != "下载中心").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
             return View();
         }
 

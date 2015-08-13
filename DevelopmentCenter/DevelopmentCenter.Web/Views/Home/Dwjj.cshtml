@@ -123,8 +123,15 @@
                 <span>当前位置：</span><a href="@Url.Action("Index", "home")">网站首页</a>&gt;<a>单位概况</a>&gt;<a class="last">单位简介</a>
             </div>
             <div class="article article1">
-                <h2 class="title">@ViewBag.dwjj.Title</h2>
-                <p>@ViewBag.dwjj.Body</p>
+                @if (ViewBag.dwjj != null)
+                {
+                    <h2 class="title">@ViewBag.dwjj.Title</h2>
+                    <p>@ViewBag.dwjj.Body</p>
+                }
+                else
+                {
+                    <p>暂无单位简介</p>
+                }
             </div>
         </div>
     </div>

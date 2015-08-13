@@ -128,7 +128,7 @@
             </div>
             <div class="article article2">
                 <h2 class="title">领导简介</h2>
-                @if (Model != null)
+                @if (Model != null&&Model.Count != 0)
                 {
                     foreach (var item in Model.Where(item => item != null))
                     {

@@ -124,7 +124,7 @@
                 <span>当前位置：</span><a>网站首页</a>&gt;<a>文化科技</a>&gt;<a class="last">资源建设</a>
             </div>
             <div class="hot-news">
-                 @if (Model != null)
+                 @if (Model != null&&Model.Count != 0)
                  {
                      var length = Model.Where(item => item != null).FirstOrDefault().Body.Length > 120 ? 120 : Model.Where(item => item != null).FirstOrDefault().Body.Length;
                     <h3>热点:<span>@Model.Where(item => item != null).FirstOrDefault().Title</span></h3>
@@ -155,7 +155,7 @@
             <div class="article article1">
                 <h2 class="title">资源建设</h2>
                 <ul>
-                    @if (Model != null)
+                    @if (Model != null&&Model.Count != 0)
                     {
                         foreach (var item in Model.Where(item => item != null))
                         {
