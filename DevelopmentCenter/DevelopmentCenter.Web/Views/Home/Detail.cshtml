@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="nizhanjun,guansheng">
     <link href="~/Content/site.css" rel="stylesheet" />
-    <title>Example</title>
+    <title>@ViewBag.Detail.ColumnTags</title>
 </head>
 <body>
     <div class="header">
@@ -24,21 +24,21 @@
         </h1>
         <div class="header-rt">
             <div class="lgrg">
-                <a class="login" href="#">登陆</a>
-                <a class="register" href="#">注册</a>
+                <a class="login " href="http://123.57.147.88:8081/Admin/">登陆</a>
+              
             </div>
             <div class="form-group">
-                <input class="form-input" placeholder="搜索" />
-                <a class="sure">确定</a>
+               
+                
             </div>
         </div>
     </div>
     <div class="nav">
         <ul>
-            <li>
+            <li class="active">
                 <a href="@Url.Action("index", "home")">首页</a>
             </li>
-            <li class="active">
+            <li>
                 <a href="@Url.Action("dwjj", "home")">单位概况</a>
                 <div>
                     <ul class="cur1">
@@ -88,7 +88,7 @@
                     <ul class="cur5">
                         <li><a href="@Url.Action("Whjlzlby", "home")">展览展演</a></li>
                         <li><a href="@Url.Action("Whjlds", "home")">大赛</a></li>
-                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li>
+                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li> <li><a href="@Url.Action("Xzzx", "home")">下载中心</a></li>
                     </ul>
                 </div>
             </li>
@@ -136,10 +136,11 @@
                         </span>
                     }
                     <p>@ViewBag.Detail.Body</p>
-                    @*<div class="page">
-                            <a href="#">上一篇</a>
-                            <a href="#">下一篇</a>
-                        </div>*@
+                    @if (!string.IsNullOrEmpty(ViewBag.Detail.OtherImageUrl))
+                    {
+                        <a href="http://123.57.147.88:8081/Uploads/@ViewBag.Detail.OtherImageUrl">下载</a>
+                    }
+
                 </div>
             </div>
         }
@@ -150,8 +151,8 @@
     </div>
     <div class="footer">
         <ul class="ft-nav">
-            <li><a>关于我们</a></li>|
-            <li><a>招聘信息</a></li>|
+            <li><a href="@Url.Action("dwjj", "home")">关于我们</a></li>|
+           
             <li><a>联系我们</a></li>|
             <li><a>网站地图</a></li>
         </ul>

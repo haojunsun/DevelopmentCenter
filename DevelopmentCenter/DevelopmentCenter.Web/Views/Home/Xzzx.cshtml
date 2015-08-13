@@ -5,6 +5,7 @@
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="nizhanjun,guansheng">
     <link href="~/Content/site.css" rel="stylesheet" />
-    <title>资源建设</title>
+    <title>下载中心</title>
 </head>
 <body>
     <div class="header">
@@ -77,7 +78,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="@Url.Action("Whzdsy", "home")">文化科技</a>
                 <div>
                     <ul class="cur4">
@@ -86,13 +87,14 @@
                     </ul>
                 </div>
             </li>
-            <li>
+            <li class="active">
                 <a href="@Url.Action("Whjlzlby", "home")">文化交流</a>
                 <div>
                     <ul class="cur5">
                         <li><a href="@Url.Action("Whjlzlby", "home")">展览展演</a></li>
                         <li><a href="@Url.Action("Whjlds", "home")">大赛</a></li>
-                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li> <li><a href="@Url.Action("Xzzx", "home")">下载中心</a></li>
+                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li>
+                        <li><a href="@Url.Action("Xzzx", "home")">下载中心</a></li>
                     </ul>
                 </div>
             </li>
@@ -109,57 +111,31 @@
             </li>
         </ul>
     </div>
-    <div class="container technology">
+    <div class="container project">
         <div class="sidebar">
             <div class="sidebar-top">
-                <span>文化科技</span>
+                <span>下载中心</span>
             </div>
             <ul>
-                <li><a href="@Url.Action("Whzdsy", "home")">重点实验</a></li>
-                <li class="active"><a href="@Url.Action("Whzyjs", "home")">资源建设</a></li>
+                <li><a href="@Url.Action("Whjlzlby", "home")">展览展演</a></li>
+                <li><a href="@Url.Action("Whjlds", "home")">大赛</a></li>
+                <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li>
+                <li class="active"><a href="@Url.Action("Xzzx", "home")">下载中心</a></li>
             </ul>
         </div>
-        <div class="content-rt technology-zyjs">
+        <div class="content-rt  project-jczsgat ">
             <div class="sidemenu">
-                <span>当前位置：</span><a>网站首页</a>&gt;<a>文化科技</a>&gt;<a class="last">资源建设</a>
-            </div>
-            <div class="hot-news">
-                 @if (Model != null&&Model.Count != 0)
-                 {
-                     var length = Model.Where(item => item != null).FirstOrDefault().Body.Length > 120 ? 120 : Model.Where(item => item != null).FirstOrDefault().Body.Length;
-                    <h3>热点:<span>@Model.Where(item => item != null).FirstOrDefault().Title</span></h3>
-
-                    <div><a href="@Url.Action("Detail", "home", new { id = Model.Where(item => item != null).FirstOrDefault().ArticleId })">@Model.Where(item => item != null).FirstOrDefault().Body.Substring(0, length)...<span> ......进入></span></a></div>
-                }
-            </div>
-            <div class="TabExchange">
-                @if (ViewBag.columnTag == "数据库")
-                {
-                    <a href="@Url.Action("Whzyjs", "home",new{columnTag = "数据库"})" class="TabExchangeOn">数据库</a>
-                    <a href="@Url.Action("Whzyjs", "home", new { columnTag = "田野考察" })">田野考察</a>
-                    <a href="@Url.Action("Whzyjs", "home", new { columnTag = "学术研究" })">学术研究</a>
-                }
-                @if (ViewBag.columnTag == "田野考察")
-                {
-                    <a href="@Url.Action("Whzyjs", "home",new{columnTag = "数据库"})">数据库</a>
-                    <a href="@Url.Action("Whzyjs", "home", new { columnTag = "田野考察" })" class="TabExchangeOn">田野考察</a>
-                    <a href="@Url.Action("Whzyjs", "home", new { columnTag = "学术研究" })">学术研究</a>
-                }
-                @if (ViewBag.columnTag == "学术研究")
-                {
-                    <a href="@Url.Action("Whzyjs", "home",new{columnTag = "数据库"})">数据库</a>
-                    <a href="@Url.Action("Whzyjs", "home", new { columnTag = "田野考察" })">田野考察</a>
-                    <a href="@Url.Action("Whzyjs", "home", new { columnTag = "学术研究" })" class="TabExchangeOn">学术研究</a>
-                }
+                <span>当前位置：</span><a>网站首页</a>&gt;<a>下载中心</a>&gt;<a class="last">资源列表</a>
             </div>
             <div class="article article1">
-                <h2 class="title">资源建设</h2>
+                <h2 class="title">下载中心</h2>
                 <ul>
-                    @if (Model != null&&Model.Count != 0)
+                    @if (Model != null && Model.Count != 0)
                     {
                         foreach (var item in Model.Where(item => item != null))
                         {
                             <li><a href="@Url.Action("Detail", "home", new { id = item.ArticleId })">@item.Title</a></li>
+
                         }
                     }
                 </ul>
@@ -167,7 +143,7 @@
                     <span>
                         共@(Model.TotalItemCount)条,每页@(Model.PageSize)条,当前@(Model.PageNumber)/@(Model.PageCount)页
                     </span>
-                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("whzyjs", "Home", new
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Gcgat", "Home", new
                         {
                             page,
                             @size = ViewBag.Size,
@@ -178,10 +154,11 @@
                 </div>
             </div>
         </div>
-    </div>  <div class="footer">
+    </div>
+    <div class="footer">
         <ul class="ft-nav">
             <li><a href="@Url.Action("dwjj", "home")">关于我们</a></li>|
-           
+
             <li><a>联系我们</a></li>|
             <li><a>网站地图</a></li>
         </ul>

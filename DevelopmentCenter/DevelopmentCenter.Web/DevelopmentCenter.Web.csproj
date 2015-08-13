@@ -967,6 +967,7 @@
     <Content Include="Views\Home\Zxysx.cshtml" />
     <Content Include="Views\Home\Zxjqgl.cshtml" />
     <Content Include="Views\Home\Zxbzh.cshtml" />
+    <Content Include="Views\Home\Xzzx.cshtml" />
     <None Include="Web.Backload.Default.config" />
     <None Include="Web.Backload.xsd">
       <SubType>Designer</SubType>

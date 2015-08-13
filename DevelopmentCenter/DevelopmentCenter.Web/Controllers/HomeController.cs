@@ -400,5 +400,23 @@ namespace DevelopmentCenter.Web.Controllers
             return View(personsAsIPagedList);
         }
         //专项管理-----------end
+
+        //下载中心
+        public ActionResult Xzzx(string channelTag = "首页", string columnTag = "下载中心", int tagtype = 1, int page = 1, int size = 20)
+        {
+            ViewBag.columnTag = columnTag;
+
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            return View(personsAsIPagedList);
+        }
     }
 }
