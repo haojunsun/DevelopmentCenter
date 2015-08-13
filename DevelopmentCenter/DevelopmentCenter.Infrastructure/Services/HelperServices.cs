@@ -119,6 +119,8 @@ namespace DevelopmentCenter.Infrastructure.Services
         string UpLoadImg(string fileName, string path);
 
         int GetStrCount(string strOriginal, string strSymbol);
+
+        string UpLoadFile(string fileName, string path);
     }
 
     public class HelperServices : IHelperServices
@@ -467,6 +469,38 @@ namespace DevelopmentCenter.Infrastructure.Services
                 }
             }
             return count;
+        }
+
+        public string UpLoadFile(string fileName, string path)
+        {
+            //上传和返回(保存到数据库中)的路径
+            var uppath = string.Empty;
+            var savepath = string.Empty;
+            if (HttpContext.Current.Request.Files.Count > 0)
+            {
+                //HttpContext.Current.Request.Files[""];
+                HttpPostedFileBase imgFile = new HttpPostedFileWrapper(HttpContext.Current.Request.Files[fileName]);
+                if (imgFile != null)
+                {
+                    //创建图片新的名称
+                    var nameImg = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                    //获得上传图片的路径
+                    var strPath = imgFile.FileName;
+                    //获得上传图片的类型(后缀名)
+                    var type = strPath.Substring(strPath.LastIndexOf(".") + 1).ToLower();
+                    if (type != "rar" && type != "zip")
+                        return savepath;
+                    //拼写数据库保存的相对路径字符串
+                    uppath = string.IsNullOrEmpty(path) ? HttpContext.Current.Server.MapPath("~/Uploads/") : HttpContext.Current.Server.MapPath("~/Uploads/" + path + "/");
+                    savepath += nameImg + "." + type;
+                    //拼写上传的路径
+                    uppath += nameImg + "." + type;
+                    //上传图片
+                    imgFile.SaveAs(uppath);
+                    return savepath;
+                }
+            }
+            return "";
         }
     }
 }

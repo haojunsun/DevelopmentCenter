@@ -99,6 +99,7 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
             if (Request.Files.Count > 0)
             {
                 article.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
+                article.OtherImageUrl = _helperServices.UpLoadFile("file1", ""); //获取上传文件
                 //if (string.IsNullOrEmpty(article.TitleImageUrl))
                 //    return Content("<script>alert('图片不能为空');window.location.href='" + Url.Action("Create", new
                 //    {
@@ -140,6 +141,9 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
                 article.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
                 if (!string.IsNullOrEmpty(article.TitleImageUrl))
                     old.TitleImageUrl = article.TitleImageUrl;
+                article.OtherImageUrl = _helperServices.UpLoadFile("file1", ""); //获取上传文件
+                if(!string.IsNullOrEmpty(article.OtherImageUrl))
+                    old.OtherImageUrl = article.OtherImageUrl;
             }
             _articleService.Update(old);
 
