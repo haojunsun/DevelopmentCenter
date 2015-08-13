@@ -116,7 +116,10 @@
                                                         <a href="@Url.Action("List", "Article", new { @channelTag = "首页", @columnTag = "友情连接", @tagtype = 1 })">友情连接</a>
                                                     </li>
                                                     <li>
-                                                        <a href="@Url.Action("List", "Article", new { @channelTag = "首页", @columnTag = "招聘信息", @tagtype = 1 })">招聘信息</a>
+                                                        <a href="@Url.Action("List", "Article", new {@channelTag = "首页", @columnTag = "招聘信息", @tagtype = 1})">招聘信息</a>
+                                                    </li>
+                                                     <li>
+                                                        <a href="@Url.Action("List", "Article", new { @channelTag = "首页", @columnTag = "下载中心", @tagtype = 1 })">下载中心</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -125,8 +128,6 @@
                                 </li>
                             </ul>
                         </li>
-
-           
 
                     <li class="menu-dropdown mega-menu-dropdown ">
                             <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
