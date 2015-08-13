@@ -134,7 +134,7 @@
                     {
                         <p>
                             <span><img src="~/Uploads/@item.TitleImageUrl" /></span>
-                            <strong>@item.Title</strong>
+                            <a href="@Url.Action("Detail", "home", new { id = item.ArticleId })"><strong>@item.Title</strong></a>
                             @item.Body
                         </p>
                         <div class="clear"></div>

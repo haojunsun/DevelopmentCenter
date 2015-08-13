@@ -132,7 +132,7 @@
                 {
                     foreach (var item in Model.Where(item => item != null))
                     {
-                        <p><a>@item.Title</a></p>
+                        <p><a href="@Url.Action("Detail", "home", new { id = item.ArticleId })">@item.Title</a></p>
                     }
                 }
             </div>

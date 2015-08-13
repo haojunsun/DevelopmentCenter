@@ -128,7 +128,7 @@
                 {
                     <h3>热点:<span>@Model.Where(item => item != null).FirstOrDefault().Title</span></h3>
 
-                    <div><a>@Model.Where(item => item != null).FirstOrDefault().Body<span> ......进入></span></a></div>
+                    <div><a href="@Url.Action("Detail", "home", new { id = Model.Where(item => item != null).FirstOrDefault().ArticleId })">@Model.Where(item => item != null).FirstOrDefault().Body<span> ......进入></span></a></div>
                 }
             </div>
             <div class="TabExchange">
@@ -158,7 +158,7 @@
                     {
                         foreach (var item in Model.Where(item => item != null))
                         {
-                            <li><a>@item.Title</a></li>
+                            <li><a href="@Url.Action("Detail", "home", new { id = item.ArticleId })">@item.Title</a></li>
                         }
                     }
                 </ul>

@@ -796,7 +796,10 @@
     <Content Include="Content\images\1404803264.jpg" />
     <Content Include="Content\images\1406010976.jpg" />
     <Content Include="Content\images\20140725100408.jpg" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\footer.jpg" />
     <Content Include="Content\images\header-bg.jpg" />
+    <Content Include="Content\images\icon-title.png" />
     <Content Include="Content\images\idnex.html" />
     <Content Include="Content\images\images.jpg" />
     <Content Include="Content\images\images1.jpg" />
@@ -886,6 +889,7 @@
     <Content Include="Content\site.css.map" />
     <Content Include="Content\site.scss" />
     <Content Include="Content\_public.scss" />
+    <Content Include="Content\images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\DevelopmentCenter.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\interact.js" />
