@@ -139,14 +139,19 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
             old.IsDraft = article.IsDraft;
             old.IsRelease = old.IsDraft == 0 ? 1 : 0;
 
+            HttpPostedFileBase hp = Request.Files["file1"];
+
             if (Request.Files.Count > 0)
             {
                 article.TitleImageUrl = _helperServices.UpLoadImg("file", ""); //获取上传图片 
                 if (!string.IsNullOrEmpty(article.TitleImageUrl))
                     old.TitleImageUrl = article.TitleImageUrl;
-                article.OtherImageUrl = _helperServices.UpLoadFile("file1", ""); //获取上传文件
-                if (!string.IsNullOrEmpty(article.OtherImageUrl))
-                    old.OtherImageUrl = article.OtherImageUrl;
+                if (hp != null)
+                {
+                    article.OtherImageUrl = _helperServices.UpLoadFile("file1", ""); //获取上传文件
+                    if (!string.IsNullOrEmpty(article.OtherImageUrl))
+                        old.OtherImageUrl = article.OtherImageUrl;
+                }
             }
             _articleService.Update(old);
 
