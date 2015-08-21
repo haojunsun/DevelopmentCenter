@@ -890,7 +890,6 @@
     <Content Include="Content\site.css.map" />
     <Content Include="Content\site.scss" />
     <Content Include="Content\_public.scss" />
-    <Content Include="Content\images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\DevelopmentCenter.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\interact.js" />
