@@ -135,7 +135,7 @@
                         <p>
                             <span><img src="~/Uploads/@item.TitleImageUrl" /></span>
                             <a href="@Url.Action("Detail", "home", new { id = item.ArticleId })"> <strong>@item.Title</strong></a>
-                            @item.Body
+                            @Html.Raw(item.Body)
                         </p>
                         <div class="clear"></div>
                     }

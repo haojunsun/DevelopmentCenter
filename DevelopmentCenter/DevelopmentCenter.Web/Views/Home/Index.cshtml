@@ -120,7 +120,7 @@
                     {
                         <div class="carou">
                             <img src="~/Uploads/@ViewBag.lunbotu[i].TitleImageUrl" title="banner" alt="banner">
-                            <div class="tips">@ViewBag.lunbotu[i].Body</div>
+                            <div class="tips">@Html.Raw(ViewBag.lunbotu[i].Body)</div>
                         </div>
                     }
                 }
@@ -156,7 +156,7 @@
                     {
                         for (int i = 0; i < ViewBag.zxlingdao.Count; i++)
                         {
-                            <a href="#">@ViewBag.zxlingdao[i].Body：@ViewBag.zxlingdao[i].Title</a>
+                            <a href="#">@Html.Raw(ViewBag.zxlingdao[i].Body)：@ViewBag.zxlingdao[i].Title</a>
                         }
                     }
                 </div>

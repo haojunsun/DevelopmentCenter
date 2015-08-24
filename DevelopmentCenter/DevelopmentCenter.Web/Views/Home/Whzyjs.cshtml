@@ -129,7 +129,7 @@
                      var length = Model.Where(item => item != null).FirstOrDefault().Body.Length > 120 ? 120 : Model.Where(item => item != null).FirstOrDefault().Body.Length;
                     <h3>热点:<span>@Model.Where(item => item != null).FirstOrDefault().Title</span></h3>
 
-                    <div><a href="@Url.Action("Detail", "home", new { id = Model.Where(item => item != null).FirstOrDefault().ArticleId })">@Model.Where(item => item != null).FirstOrDefault().Body.Substring(0, length)...<span> ......进入></span></a></div>
+                    <div><a href="@Url.Action("Detail", "home", new { id = Model.Where(item => item != null).FirstOrDefault().ArticleId })">@Html.Raw(Model.Where(item => item != null).FirstOrDefault().Body.Substring(0, length))...<span> ......进入></span></a></div>
                 }
             </div>
             <div class="TabExchange">
