@@ -87,7 +87,7 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
         public ActionResult Create(string channelTag, string columnTag, int tagtype, string title, string body, int isDraft)
         {
             var article = new Article();
-            article.Body = body;
+            article.Body = body.Replace(" ", "&nbsp").Replace("\r\n", "<br />");
             article.Title = title;
             article.CreatedUtc = DateTime.Now;
             article.ChannelTags = channelTag;
@@ -134,7 +134,7 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
         {
             var old = _articleService.Get(article.ArticleId);
             old.Title = article.Title;
-            old.Body = article.Body;
+            old.Body = article.Body.Replace(" ", "&nbsp").Replace("\r\n", "<br />"); ;
             old.ManagerName = _simpleAccount.GetUserElement().Name;
             old.IsDraft = article.IsDraft;
             old.IsRelease = old.IsDraft == 0 ? 1 : 0;

@@ -135,7 +135,7 @@
                             <img src="~/Uploads/@ViewBag.Detail.TitleImageUrl" />
                         </span>
                     }
-                    <p>@ViewBag.Detail.Body</p>
+                    <p>@Html.Raw(ViewBag.Detail.Body)</p>
                     @if (!string.IsNullOrEmpty(ViewBag.Detail.OtherImageUrl))
                     {
                         <a href="http://123.57.191.6:8001/Uploads/@ViewBag.Detail.OtherImageUrl">下载</a>
