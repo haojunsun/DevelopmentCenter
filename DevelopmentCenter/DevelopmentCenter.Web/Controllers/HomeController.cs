@@ -23,7 +23,7 @@ namespace DevelopmentCenter.Web.Controllers
         {
             ViewBag.lunbotu = _articleService.List().Where(x => x.ColumnTags == "轮播图").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
             ViewBag.tzgonggao = _articleService.List().Where(x => x.ColumnTags == "通知公告").OrderByDescending(x => x.CreatedUtc).Take(8).ToList();
-            ViewBag.zxlingdao = _articleService.List().Where(x => x.ColumnTags == "中心领导").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
+            ViewBag.zxlingdao = _articleService.List().Where(x => x.ColumnTags == "领导简介").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
             ViewBag.jgshezhi = _articleService.List().Where(x => x.ColumnTags == "机构设置").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
             ViewBag.zxtongxun = _articleService.List().Where(x => x.ColumnTags == "中心快讯").OrderByDescending(x => x.CreatedUtc).Take(8).ToList();
             ViewBag.xwbolan = _articleService.List().Where(x => x.ColumnTags == "新闻博览").OrderByDescending(x => x.CreatedUtc).Take(8).ToList();
