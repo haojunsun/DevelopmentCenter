@@ -418,5 +418,41 @@ namespace DevelopmentCenter.Web.Controllers
             var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
             return View(personsAsIPagedList);
         }
+        //中心快讯
+        public ActionResult Zxkx(string channelTag = "首页", string columnTag = "中心快讯", int tagtype = 1, int page = 1, int size = 20)
+        {
+            ViewBag.columnTag = columnTag;
+
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            ViewBag.Newlist = _articleService.List().Where(x => x.ColumnTags == "中心快讯").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
+            return View(personsAsIPagedList);
+        }
+        //新闻博览
+        public ActionResult Xwbl(string channelTag = "首页", string columnTag = "新闻博览", int tagtype = 1, int page = 1, int size = 20)
+        {
+            ViewBag.columnTag = columnTag;
+
+            var pageIndex = page;
+            var pageSize = size;
+            var totalCount = 0;
+
+            var list = new List<Article>();
+            ViewBag.channelTag = channelTag;
+            ViewBag.columnTag = columnTag;
+            ViewBag.tagtype = tagtype;
+            list = tagtype == 0 ? _articleService.GetByChannelTag(channelTag, pageIndex, pageSize, ref totalCount).ToList() : _articleService.GetByColumnTag(columnTag, pageIndex, pageSize, ref totalCount).ToList();
+            var personsAsIPagedList = new StaticPagedList<Article>(list, pageIndex, pageSize, totalCount);
+            ViewBag.Newlist = _articleService.List().Where(x => x.ColumnTags == "新闻博览").OrderByDescending(x => x.CreatedUtc).Take(5).ToList();
+            return View(personsAsIPagedList);
+        }
     }
 }
