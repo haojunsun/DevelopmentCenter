@@ -126,7 +126,10 @@ namespace DevelopmentCenter.Web.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var article = _articleService.Get(id);
-            article.Body = article.Body.Replace("<br />", "\r\n").Replace("&nbsp", " ");
+            if (!string.IsNullOrEmpty(article.Body))
+            {
+                article.Body = article.Body.Replace("<br />", "\r\n").Replace("&nbsp", " ");
+            }
             return View(article);
         }
 
