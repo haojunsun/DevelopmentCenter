@@ -31,8 +31,8 @@
                 <p>您好欢迎登陆！<a>退出</a></p>
             </div>
             @*<div class="form-group">
-                   
-                    
+
+
                 </div>*@
         </div>
     </div>
@@ -91,7 +91,8 @@
                     <ul class="cur5">
                         <li><a href="@Url.Action("Whjlzlby", "home")">展览展演</a></li>
                         <li><a href="@Url.Action("Whjlds", "home")">大赛</a></li>
-                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li> <li><a href="@Url.Action("Xzzx", "home")">下载中心</a></li>
+                        <li><a href="@Url.Action("Whjlqt", "home")">其他</a></li>
+                        <li><a href="@Url.Action("Xzzx", "home")">下载中心</a></li>
                     </ul>
                 </div>
             </li>
@@ -194,7 +195,7 @@
                 <div class="zxkx">
                     <div class="zxkx-title">
                         <span>中心快讯</span>
-                        <a href="#">更多>></a>
+                        <a href="@Url.Action("zxkx", "home")">更多>></a>
                     </div>
                     <div href="#" class="text-picche">
                         @if (ViewBag.zxtongxun != null)
@@ -224,7 +225,7 @@
                 <div class="zxkx zxkx1">
                     <div class="zxkx-title">
                         <span>新闻博览</span>
-                        <a href="#">更多>></a>
+                        <a href="@Url.Action("xwbl", "home")">更多>></a>
                     </div>
                     <div href="#" class="text-picche">
                         @if (ViewBag.xwbolan != null)
@@ -273,7 +274,7 @@
     <div class="footer">
         <ul class="ft-nav">
             <li><a href="@Url.Action("dwjj", "home")">关于我们</a></li>|
-           
+
             <li><a>联系我们</a></li>|
             <li><a>网站地图</a></li>
         </ul>
