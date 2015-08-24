@@ -144,7 +144,7 @@
                     {
                         foreach (var item in Model.Where(item => item != null))
                         {
-                            <li><a href="@Url.Action("Detail", "home", new { id = item.ArticleId })">@item.Title</a></li>
+                            <li><a href="@Url.Action("Detail", "home", new { id = item.ArticleId })">@item.Title</a><span>@item.CreatedUtc</span></li>
                         }
                     }
                 </ul>
@@ -152,7 +152,7 @@
                     <span>
                         共@(Model.TotalItemCount)条,每页@(Model.PageSize)条,当前@(Model.PageNumber)/@(Model.PageCount)页
                     </span>
-                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Gcgat", "Home", new
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("xwbl", "Home", new
                         {
                             page,
                             @size = ViewBag.Size,
