@@ -305,7 +305,7 @@ li {
   list-style: none; }
 
 body {
-  font-size: 63%;
+  font-size: 70%;
   font-family: 'Microsoft YaHei', "Helvetica Neue", Helvetica, Arial, Roboto, 'Droid Sans', "Lucida Grande", sans-serif; }
 
 a {
@@ -436,7 +436,7 @@ a {
       .nav > ul > li > a {
         width: auto;
         height: 100%;
-        padding: 0 18px;
+        padding: 0 12px;
         display: block;
         cursor: pointer; }
       .nav > ul > li div {
@@ -460,7 +460,7 @@ a {
             height: 100%; }
             .nav > ul > li div ul li a {
               cursor: pointer;
-              padding: 0 16px;
+              padding: 0 10px;
               display: block; }
             .nav > ul > li div ul li:hover a {
               color: #cb0b16; }
@@ -766,12 +766,12 @@ a {
   width: 100%;
   margin-bottom: 20px; }
   .home .banner .carousel {
-    width: 725px;
+    width: 680px;
     height: 316px;
     overflow: hidden;
     float: left; }
     .home .banner .carousel .carou {
-      width: 725px;
+      width: 680px;
       height: 316px;
       position: relative; }
       .home .banner .carousel .carou .tips {
@@ -802,7 +802,7 @@ a {
         .home .banner .carousel .owl-dots .owl-dot.active {
           background-color: #cb0b16; }
   .home .banner .banner-left {
-    width: 278px;
+    width: 310px;
     height: 316px;
     background-color: #fff;
     background-image: url(../Content/images/index_24.jpg);
